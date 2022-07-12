@@ -11,42 +11,22 @@ import java.sql.Statement;
 
 public class Main {
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
-    private static final String USERNAME = "postgres";
-    private static final String PASSWORD = "postgres";
-
-    public static Connection connection;
-
-    static {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void main(String[] args) {
 
-        UserDaoJDBCImpl userDaoJDBC = new UserDaoJDBCImpl();
+        UserDao userDao = new UserDaoJDBCImpl();
 
-        userDaoJDBC.createUsersTable();
-//        userDaoJDBC.dropUsersTable();
+        userDao.createUsersTable();
+//        userDao.dropUsersTable();
 
-        userDaoJDBC.saveUser("Ivan", "Ivanov", (byte) 18);
-        userDaoJDBC.saveUser("Petr", "Petrov", (byte) 23);
-        userDaoJDBC.saveUser("Semen", "Semenov", (byte) 18);
-        userDaoJDBC.saveUser("Dua", "Lipa", (byte) 31);
-        userDaoJDBC.saveUser("Ana", "De Armas", (byte) 27);
-
-        userDaoJDBC.removeUserById(2);
-        System.out.println(userDaoJDBC.getAllUsers());
+        userDao.saveUser("Ivan", "Ivanov", (byte) 18);
+        userDao.saveUser("Petr", "Petrov", (byte) 23);
+        userDao.saveUser("Semen", "Semenov", (byte) 18);
+        userDao.saveUser("Dua", "Lipa", (byte) 31);
+        userDao.saveUser("Ana", "De Armas", (byte) 27);
 //
-        userDaoJDBC.cleanUsersTable();
+        userDao.removeUserById(3);
+        System.out.println(userDao.getAllUsers());
+
+//        userDao.cleanUsersTable();
     }
 }
