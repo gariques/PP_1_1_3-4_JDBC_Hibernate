@@ -1,6 +1,7 @@
 package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import org.postgresql.Driver;
 
@@ -13,7 +14,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        UserDao userDao = new UserDaoJDBCImpl();
+//        UserDao userDao = new UserDaoJDBCImpl();
+        UserDao userDao = new UserDaoHibernateImpl();
 
         userDao.createUsersTable();
 //        userDao.dropUsersTable();
@@ -23,10 +25,12 @@ public class Main {
         userDao.saveUser("Semen", "Semenov", (byte) 18);
         userDao.saveUser("Dua", "Lipa", (byte) 31);
         userDao.saveUser("Ana", "De Armas", (byte) 27);
-//
-        userDao.removeUserById(3);
-        System.out.println(userDao.getAllUsers());
 
-//        userDao.cleanUsersTable();
+//        userDao.removeUserById(3);
+        System.out.println(userDao.getAllUsers());
+//
+        userDao.cleanUsersTable();
+
+
     }
 }
