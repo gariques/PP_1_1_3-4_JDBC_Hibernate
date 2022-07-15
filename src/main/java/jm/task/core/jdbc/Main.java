@@ -26,10 +26,10 @@ public class Main {
         userDao.saveUser("Dua", "Lipa", (byte) 31);
         userDao.saveUser("Ana", "De Armas", (byte) 27);
 
-//        userDao.removeUserById(3);
+        userDao.removeUserById(10);
         System.out.println(userDao.getAllUsers());
 //
-        userDao.cleanUsersTable();
+//        userDao.cleanUsersTable();
 
 
     }
